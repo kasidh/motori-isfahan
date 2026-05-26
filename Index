@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>سازمان خدمات موتوری شهرداری اصفهان</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px 30px;
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            animation: slideUp 0.5s ease;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .header .logo {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 13px;
+        }
+
+        .menu-items {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 18px;
+            background: #f8f9fa;
+            border-radius: 12px;
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            cursor: pointer;
+        }
+
+        .menu-item:active {
+            background: #e9ecef;
+            transform: scale(0.98);
+        }
+
+        .menu-item.maps {
+            border-left: 5px solid #4285f4;
+        }
+
+        .menu-item.maps:hover {
+            background: #e3f2fd;
+        }
+
+        .menu-item.phone {
+            border-left: 5px solid #25d366;
+        }
+
+        .menu-item.phone:hover {
+            background: #e8f5e9;
+        }
+
+        .icon {
+            font-size: 28px;
+            min-width: 35px;
+        }
+
+        .text {
+            text-align: right;
+            flex: 1;
+        }
+
+        .text-title {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .text-desc {
+            font-size: 13px;
+            color: #999;
+        }
+
+        .qr-section {
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 2px solid #e9ecef;
+        }
+
+        .qr-section p {
+            color: #666;
+            font-size: 13px;
+            margin-bottom: 15px;
+            font-weight: 500;
+        }
+
+        .qr-code {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            display: inline-block;
+            border: 2px solid #e9ecef;
+        }
+
+        .qr-code img {
+            display: block;
+            width: 160px;
+            height: 160px;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 12px;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="logo">🚗</div>
+            <h1>سازمان خدمات موتوری<br>شهرداری اصفهان</h1>
+            <p>ما را بیابید و تماس بگیرید</p>
+        </div>
+
+        <div class="menu-items">
+            <!-- لینک نقشه -->
+            <a href="https://nshn.ir/7bZI7y0xanF3" class="menu-item maps" target="_blank">
+                <span class="icon">📍</span>
+                <div class="text">
+                    <div class="text-title">موقعیت مکان</div>
+                    <div class="text-desc">مسیر را نمایش دهید</div>
+                </div>
+            </a>
+
+            <!-- شماره تماس -->
+            <a href="tel:+983130304040" class="menu-item phone">
+                <span class="icon">📞</span>
+                <div class="text">
+                    <div class="text-title">تماس با ما</div>
+                    <div class="text-desc">031 - 3030404</div>
+                </div>
+            </a>
+        </div>
+
+        <div class="qr-section">
+            <p>یا از این QR Code استفاده کنید:</p>
+            <div class="qr-code">
+                <img src="" alt="QR Code" id="qrImage">
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>✨ اسکن QR Code برای دسترسی سریع</p>
+        </div>
+    </div>
+
+    <script>
+        // تولید QR Code خودکار
+        const currentURL = window.location.href;
+        const qrImage = document.getElementById('qrImage');
+        qrImage.src = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(currentURL)}`;
+    </script>
+</body>
+</html>
